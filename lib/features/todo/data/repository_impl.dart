@@ -1,6 +1,7 @@
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:todo_app/features/todo/domain/model.dart';
+import 'package:todo_app/features/todo/data/model/todo_model.dart';
+import 'package:todo_app/features/todo/domain/entity.dart';
 import 'package:todo_app/features/todo/domain/repository.dart';
 
 class TodoRepositoryImpl implements TodoRepository {
@@ -20,11 +21,11 @@ class TodoRepositoryImpl implements TodoRepository {
   }
 
   @override
-  Future<List<Todo>> fetchTodos() async {
+  Future<List<TodoModel>> fetchTodos() async {
     await _initDatabase();
     final maps = await _database.query('todos');
     return List.generate(maps.length, (i) {
-      return Todo(
+      return TodoModel(
         id: maps[i]['id'] as String,
         title: maps[i]['title'] as String,
         description: maps[i]['description'] as String,

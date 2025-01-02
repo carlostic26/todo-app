@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:todo_app/features/todo/domain/model.dart';
+import 'package:todo_app/features/todo/data/model/todo_model.dart';
 import 'dart:math';
-
-import 'package:todo_app/features/todo/presentation/provider.dart';
+import 'package:todo_app/features/todo/presentation/providers/provider.dart';
 
 class AddTodoScreen extends ConsumerWidget {
   final _titleController = TextEditingController();
@@ -32,10 +31,11 @@ class AddTodoScreen extends ConsumerWidget {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                final newTodo = Todo(
+                final newTodo = TodoModel(
                   id: Random().nextInt(10000).toString(),
                   title: _titleController.text,
                   description: _descriptionController.text,
+                  isCompleted: false,
                 );
                 ref.read(todoListProvider.notifier).addTodo(newTodo);
                 Navigator.pop(context);

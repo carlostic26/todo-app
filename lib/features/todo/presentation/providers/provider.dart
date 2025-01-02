@@ -1,10 +1,11 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:todo_app/features/todo/data/model/todo_model.dart';
 import 'package:todo_app/features/todo/data/repository_impl.dart';
-import 'package:todo_app/features/todo/domain/model.dart';
+import 'package:todo_app/features/todo/domain/entity.dart';
 import 'package:todo_app/features/todo/domain/repository.dart';
 
 // Providers for todo_repository_impl.dart
-class TodoListNotifier extends StateNotifier<List<Todo>> {
+class TodoListNotifier extends StateNotifier<List<TodoModel>> {
   final TodoRepository todoRepository;
 
   TodoListNotifier(this.todoRepository) : super([]) {
@@ -16,12 +17,12 @@ class TodoListNotifier extends StateNotifier<List<Todo>> {
     state = todos;
   }
 
-  Future<void> addTodo(Todo todo) async {
+  Future<void> addTodo(TodoModel todo) async {
     await todoRepository.addTodo(todo);
-    state = [...state, todo]; // Actualiza el estado con el nuevo todo
+    state = [...state, todo];
   }
 
-  Future<void> updateTodo(Todo updatedTodo) async {
+  Future<void> updateTodo(TodoModel updatedTodo) async {
     await todoRepository.updateTodo(updatedTodo);
     state = [
       for (final todo in state)
@@ -38,7 +39,8 @@ class TodoListNotifier extends StateNotifier<List<Todo>> {
 }
 
 // Aquí defines el todoListProvider
-final todoListProvider = StateNotifierProvider<TodoListNotifier, List<Todo>>(
+final todoListProvider =
+    StateNotifierProvider<TodoListNotifier, List<TodoModel>>(
   (ref) {
     final todoRepository = ref.read(todoRepositoryProvider);
     return TodoListNotifier(todoRepository);
