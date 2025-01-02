@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:todo_app/features/todo/presentation/providers/provider.dart';
+import 'package:todo_app/features/todo/presentation/state/provider.dart';
 import 'package:todo_app/features/todo/presentation/screens/add_todo_screen.dart';
 
 class TodoListScreen extends ConsumerWidget {

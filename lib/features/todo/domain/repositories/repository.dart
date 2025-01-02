@@ -1,5 +1,4 @@
-import 'package:todo_app/features/todo/data/model/todo_model.dart';
-import 'package:todo_app/features/todo/domain/entity.dart';
+import 'package:todo_app/features/todo/data/models/todo_model.dart';
 
 abstract class TodoRepository {
   Future<List<TodoModel>> fetchTodos();

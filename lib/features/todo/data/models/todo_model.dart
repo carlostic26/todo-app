@@ -1,4 +1,4 @@
-import 'package:todo_app/features/todo/domain/entity.dart';
+import 'package:todo_app/features/todo/domain/entities/entity.dart';
 
 class TodoModel extends Todo {
   TodoModel(

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:todo_app/features/todo/data/model/todo_model.dart';
+import 'package:todo_app/features/todo/data/models/todo_model.dart';
 import 'dart:math';
-import 'package:todo_app/features/todo/presentation/providers/provider.dart';
+import 'package:todo_app/features/todo/presentation/state/provider.dart';
 
 class AddTodoScreen extends ConsumerWidget {
   final _titleController = TextEditingController();

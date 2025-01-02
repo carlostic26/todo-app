@@ -1,29 +1,19 @@
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:todo_app/features/todo/data/model/todo_model.dart';
-import 'package:todo_app/features/todo/domain/entity.dart';
-import 'package:todo_app/features/todo/domain/repository.dart';
+import 'package:todo_app/features/todo/data/datasources/local_database.dart';
+import 'package:todo_app/features/todo/data/models/todo_model.dart';
+import 'package:todo_app/features/todo/domain/entities/entity.dart';
+import 'package:todo_app/features/todo/domain/repositories/repository.dart';
 
 class TodoRepositoryImpl implements TodoRepository {
-  late Database _database;
+  final LocalDatabaseHelper _dbHelper = LocalDatabaseHelper();
 
-  Future<void> _initDatabase() async {
-    final dbPath = await getDatabasesPath();
-    _database = await openDatabase(
-      join(dbPath, 'todo.db'),
-      onCreate: (db, version) {
-        return db.execute(
-          'CREATE TABLE todos(id TEXT PRIMARY KEY, title TEXT, description TEXT, isCompleted INTEGER)',
-        );
-      },
-      version: 1,
-    );
-  }
+  Future<Database> get _database async => await _dbHelper.getDatabase();
 
   @override
   Future<List<TodoModel>> fetchTodos() async {
-    await _initDatabase();
-    final maps = await _database.query('todos');
+    final db = await _database;
+    final maps = await db.query('todos');
     return List.generate(maps.length, (i) {
       return TodoModel(
         id: maps[i]['id'] as String,
@@ -36,8 +26,8 @@ class TodoRepositoryImpl implements TodoRepository {
 
   @override
   Future<void> addTodo(Todo todo) async {
-    await _initDatabase();
-    await _database.insert(
+    final db = await _database;
+    await db.insert(
       'todos',
       {
         'id': todo.id,
@@ -51,8 +41,8 @@ class TodoRepositoryImpl implements TodoRepository {
 
   @override
   Future<void> updateTodo(Todo todo) async {
-    await _initDatabase();
-    await _database.update(
+    final db = await _database;
+    await db.update(
       'todos',
       {
         'title': todo.title,
@@ -66,8 +56,8 @@ class TodoRepositoryImpl implements TodoRepository {
 
   @override
   Future<void> deleteTodo(String id) async {
-    await _initDatabase();
-    await _database.delete(
+    final db = await _database;
+    await db.delete(
       'todos',
       where: 'id = ?',
       whereArgs: [id],
