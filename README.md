@@ -1,16 +1,42 @@
-# todo_app
+Flutter Todo App
+A task management application built with Flutter implementing Clean Architecture principles.
+Features
 
-A new Flutter project.
+Create, read, update and delete tasks
+Local data persistence with SQLite
+State management with Riverpod
+Clean Architecture implementation
 
-## Getting Started
+Architecture
+This project follows Clean Architecture with three main layers:
 
-This project is a starting point for a Flutter application.
+Domain: Business logic and entities
+Data: Repository implementations and data sources
+Presentation: UI and state management
 
-A few resources to get you started if this is your first Flutter project:
+Tech Stack
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Flutter
+Riverpod for state management
+SQLite (sqflite) for local storage
+Clean Architecture
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Getting Started
+
+1. Clone the repository
+https://github.com/YOUR_USERNAME/todo_app.git
+
+2Install dependencies
+flutter pub get
+
+3.Run the app
+flutter run
+
+Requirements
+
+Flutter SDK
+Dart SDK
+Android Studio / VS Code
+
+Contributing
+Pull requests are welcome. For major changes, please open an issue first.
