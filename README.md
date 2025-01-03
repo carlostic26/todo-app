@@ -26,7 +26,7 @@ Clean Architecture
 Getting Started
 
 1. Clone the repository
-https://github.com/YOUR_USERNAME/todo_app.git
+https://github.com/carlostic26/todo_app.git
 
 2Install dependencies
 flutter pub get
