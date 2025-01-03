@@ -1,11 +1,13 @@
 Flutter Todo App
 A task management application built with Flutter implementing Clean Architecture principles.
+
 Features
 
-Create, read, update and delete tasks
-Local data persistence with SQLite
-State management with Riverpod
-Clean Architecture implementation
+1. Create, read, update and delete tasks
+2. Local data persistence with SQLite
+3. State management with Riverpod
+4. Clean Architecture implementation
+
 
 Architecture:
 This project follows Clean Architecture with three main layers:
