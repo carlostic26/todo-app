@@ -7,7 +7,7 @@ Local data persistence with SQLite
 State management with Riverpod
 Clean Architecture implementation
 
-Architecture
+Architecture:
 This project follows Clean Architecture with three main layers:
 
 Domain: Business logic and entities
