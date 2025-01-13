@@ -5,6 +5,10 @@ import 'package:todo_app/features/todo/data/models/todo_model.dart';
 import 'package:todo_app/features/todo/domain/entities/entity.dart';
 import 'package:todo_app/features/todo/domain/repositories/repository.dart';
 
+//Esta es la implementacion del reposotorio como data source.
+//Esta clase implementa la interfaz del repositorio de domain.(Contratos)
+//Esta clase se encarga de interactuar con la base de datos local.
+
 class TodoRepositoryImpl implements TodoRepository {
   final LocalDatabaseHelper _dbHelper = LocalDatabaseHelper();
 

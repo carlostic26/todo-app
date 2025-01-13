@@ -5,6 +5,8 @@ import 'package:todo_app/features/todo/domain/usecases/fetch_todo.dart';
 import 'package:todo_app/features/todo/domain/usecases/update_todo.dart';
 import 'package:todo_app/features/todo/presentation/state/provider.dart';
 
+//Inyeccion de dependencias para los casos de uso
+
 final fetchTodosUseCaseProvider = Provider<FetchTodosUseCase>((ref) {
   final repository = ref.read(todoRepositoryProvider);
   return FetchTodosUseCase(repository);
