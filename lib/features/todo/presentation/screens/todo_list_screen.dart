@@ -1,5 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:todo_app/core/theme/theme_notifier.dart';
 import 'package:todo_app/features/todo/presentation/state/provider.dart';
 import 'package:todo_app/features/todo/presentation/screens/add_todo_screen.dart';
 
@@ -10,9 +12,20 @@ class TodoListScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final todos = ref.watch(todoListProvider);
 
+    final isDarkMode = ref.watch(themeProvider);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Lista de Tareas'),
+        actions: [
+          CupertinoSwitch(
+            value: isDarkMode,
+            onChanged: (value) =>
+                ref.read(themeProvider.notifier).toggleTheme(),
+            activeColor: CupertinoColors.systemGreen,
+            trackColor: CupertinoColors.systemGrey,
+          )
+        ],
       ),
       body: ListView.builder(
         itemCount: todos.length,

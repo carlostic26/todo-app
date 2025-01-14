@@ -14,7 +14,7 @@ class AddTodoScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Add Todo'),
+        title: const Text('Agregar Tarea'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

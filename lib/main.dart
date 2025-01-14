@@ -1,21 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:todo_app/core/theme/theme_manager.dart';
+import 'package:todo_app/core/theme/theme_notifier.dart';
 import 'package:todo_app/features/todo/presentation/screens/todo_list_screen.dart';
 
-void main() {
-  runApp(const ProviderScope(child: MyApp()));
-}
-
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerWidget {
   const MyApp({super.key});
 
+  void main() {
+    runApp(
+      const ProviderScope(
+        child: MyApp(),
+      ),
+    );
+  }
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final isDarkMode = ref.watch(themeProvider);
+
     return MaterialApp(
       title: 'Todo App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: isDarkMode ? ThemeManager.darkTheme : ThemeManager.lightTheme,
       home: const TodoListScreen(),
     );
   }
